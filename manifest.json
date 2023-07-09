@@ -1,0 +1,24 @@
+{
+    "manifest_version": 3,
+    "name": "GPT-4 Calendar Extension",
+    "version": "2.0",
+    "description": "Chrome extension that connects to GPT-4 and Google Calendar.",
+    "key": "FILLYOUROWNCHROMEEXTENSIONKEY",
+    "oauth2": {
+        "client_id": "FILLYOURGOOGLEOAUTH2CLIENTID",
+        "scopes": [
+            "https://www.googleapis.com/auth/calendar"
+        ]
+      },
+    "permissions": ["identity", "tabs","activeTab", "storage"],
+    "host_permissions": [
+        "https://www.googleapis.com/*"
+      ],
+    "background": {
+        "service_worker": "background.js"
+      },
+    "content_scripts": [{
+        "matches": ["https://calendar.google.com/*"],
+        "js": ["content.js"]
+    }]
+}
